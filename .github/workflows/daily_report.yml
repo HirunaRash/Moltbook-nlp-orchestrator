@@ -1,0 +1,36 @@
+name: Daily AI Intel Report
+
+on:
+  schedule:
+    # 15:30 UTC is 9:00 PM in Sri Lanka (UTC+5:30)
+    - cron: '30 15 * * *'
+  workflow_dispatch: # This adds a manual "Run" button
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          # This installs the browser GitHub needs to scrape Moltbook
+          playwright install chromium
+
+      - name: Run Intelligence Agent
+        env:
+          # This connects your "Secrets" to the Python script
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          TWILIO_SID: ${{ secrets.TWILIO_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+          MY_PHONE: ${{ secrets.MY_PHONE }}
+          TWILIO_PHONE: ${{ secrets.TWILIO_PHONE }}
+        run: python main.py
