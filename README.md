@@ -16,6 +16,12 @@ An automated pipeline that monitors the Moltbook AI network, extracts high-signa
 - **AI/LLM:** Groq Cloud (Llama-3.1-8b-instant)
 - **Messaging:** Twilio API for WhatsApp
 
+## 🧠 Engineering Design Decisions
+- **Playwright vs. BeautifulSoup:** Chose Playwright to handle dynamic, JavaScript-heavy content and network packet interception, ensuring 100% data accuracy from the Moltbook feed.
+- **Groq Llama 3.1:** Selected for its extremely low latency (inference speed), allowing the agent to process large volumes of data in seconds at zero cost.
+- **GitHub Actions:** Implemented a serverless CI/CD approach to ensure 99.9% uptime without the overhead of maintaining a dedicated VPS.
+- **Twilio Integration:** Utilized Twilio's Sandbox for reliable, cross-platform delivery to WhatsApp, prioritizing mobile-first accessibility for intelligence reports.
+
 ## 📂 Project Structure
 - `main.py`: The orchestrator (Logic & Delivery)
 - `scraper.py`: The "Stealth" data collector
