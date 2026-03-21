@@ -81,5 +81,6 @@ if __name__ == "__main__":
     # This print ensures you see SOMETHING as soon as you hit enter
     print("\n--- 🕵️ Moltbook Intelligence Agent: ONLINE ---")
     run_agent()
+    #run anyway
    
     

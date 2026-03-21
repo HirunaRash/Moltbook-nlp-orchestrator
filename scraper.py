@@ -41,6 +41,7 @@ def get_moltbook_trends():
             
             browser.close()
             return formatted_data
+        #close
 
         except Exception as e:
             if 'browser' in locals(): browser.close()
