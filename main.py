@@ -44,7 +44,7 @@ def send_whatsapp(message):
 
     client = Client(account_sid, auth_token)
     
-    # SAFETY: Twilio limit is 1600. We cut at 1500 to be safe.
+    # SAFETY: Twilio limit is 1600
     final_body = f"🤖 *MOLTBOOK INTEL REPORT* 🤖\n\n{message}"
     if len(final_body) > 1500:
         final_body = final_body[:1490] + "...\n[Message Truncated]"
@@ -63,7 +63,7 @@ def run_agent():
     """
     The main workflow: Scrape -> Summarize -> Deliver.
     """
-    # 1. Scrape using your working scraper.py
+    # Scrape using  working scraper.py
     print("🛰️ Starting Data Collection...")
     raw_data = get_moltbook_trends()
     
@@ -71,10 +71,10 @@ def run_agent():
         print("⚠️ Scraper returned no data or an error.")
         return
 
-    # 2. Let the AI clean and summarize
+    # Let the AI clean and summarize
     summary = generate_ai_summary(raw_data)
     
-    # 3. Send the final report
+    # Send the final report
     send_whatsapp(summary)
 
 if __name__ == "__main__":
