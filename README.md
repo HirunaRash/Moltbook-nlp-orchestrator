@@ -33,3 +33,5 @@ This repository uses **GitHub Repository Secrets** to ensure that all API keys a
 
 ---
 *Created by HirunaRash | March 2026*
+
+![WhatsApp Report Demo](report_demo.png.png)
